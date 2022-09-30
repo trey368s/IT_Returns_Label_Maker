@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace ReturnLabelMaker
 {
-    public partial class Form1 : Form
+    public partial class ReturnsForm : Form
     {
-        public Form1()
+        public ReturnsForm()
         {
             InitializeComponent();
         }
-
     }
 }
