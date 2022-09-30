@@ -30,6 +30,17 @@ namespace ReturnLabelMaker
                 textBoxZip.Enabled = true;
                 comboBoxState.Enabled = true;
             }
+            if (comboBoxLocation.Text != "Other Return Address")
+            {
+                addressLabel.Enabled = false;
+                labelCity.Enabled = false;
+                labelState.Enabled = false;
+                labelZip.Enabled = false;
+                textBoxAddress.Enabled = false;
+                textBoxCity.Enabled = false;
+                textBoxZip.Enabled = false;
+                comboBoxState.Enabled = false;
+            }
         }
     }
 }
