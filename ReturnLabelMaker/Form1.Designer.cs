@@ -40,6 +40,14 @@ namespace ReturnLabelMaker
             this.buttonGenerate = new System.Windows.Forms.Button();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.addressLabel = new System.Windows.Forms.Label();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.labelCity = new System.Windows.Forms.Label();
+            this.textBoxCity = new System.Windows.Forms.TextBox();
+            this.labelState = new System.Windows.Forms.Label();
+            this.comboBoxState = new System.Windows.Forms.ComboBox();
+            this.labelZip = new System.Windows.Forms.Label();
+            this.textBoxZip = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // h1Label
@@ -122,12 +130,14 @@ namespace ReturnLabelMaker
             this.comboBoxLocation.Name = "comboBoxLocation";
             this.comboBoxLocation.Size = new System.Drawing.Size(256, 33);
             this.comboBoxLocation.TabIndex = 8;
+            this.comboBoxLocation.SelectedIndexChanged += new System.EventHandler(this.comboBoxLocation_SelectedIndexChanged);
             // 
             // buttonGenerate
             // 
-            this.buttonGenerate.Location = new System.Drawing.Point(151, 269);
+            this.buttonGenerate.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonGenerate.Location = new System.Drawing.Point(251, 294);
             this.buttonGenerate.Name = "buttonGenerate";
-            this.buttonGenerate.Size = new System.Drawing.Size(112, 34);
+            this.buttonGenerate.Size = new System.Drawing.Size(239, 57);
             this.buttonGenerate.TabIndex = 9;
             this.buttonGenerate.Text = "Generate";
             this.buttonGenerate.UseVisualStyleBackColor = true;
@@ -146,14 +156,100 @@ namespace ReturnLabelMaker
             // 
             this.textBoxPhone.Location = new System.Drawing.Point(158, 215);
             this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.PlaceholderText = "10 digits";
             this.textBoxPhone.Size = new System.Drawing.Size(217, 31);
             this.textBoxPhone.TabIndex = 11;
+            // 
+            // addressLabel
+            // 
+            this.addressLabel.AutoSize = true;
+            this.addressLabel.Enabled = false;
+            this.addressLabel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addressLabel.Location = new System.Drawing.Point(390, 86);
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Size = new System.Drawing.Size(160, 22);
+            this.addressLabel.TabIndex = 12;
+            this.addressLabel.Text = "Street Address:";
+            // 
+            // textBoxAddress
+            // 
+            this.textBoxAddress.Enabled = false;
+            this.textBoxAddress.Location = new System.Drawing.Point(556, 83);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(176, 31);
+            this.textBoxAddress.TabIndex = 13;
+            // 
+            // labelCity
+            // 
+            this.labelCity.AutoSize = true;
+            this.labelCity.Enabled = false;
+            this.labelCity.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCity.Location = new System.Drawing.Point(390, 129);
+            this.labelCity.Name = "labelCity";
+            this.labelCity.Size = new System.Drawing.Size(60, 22);
+            this.labelCity.TabIndex = 14;
+            this.labelCity.Text = "City:";
+            // 
+            // textBoxCity
+            // 
+            this.textBoxCity.Enabled = false;
+            this.textBoxCity.Location = new System.Drawing.Point(456, 126);
+            this.textBoxCity.Name = "textBoxCity";
+            this.textBoxCity.Size = new System.Drawing.Size(276, 31);
+            this.textBoxCity.TabIndex = 15;
+            // 
+            // labelState
+            // 
+            this.labelState.AutoSize = true;
+            this.labelState.Enabled = false;
+            this.labelState.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelState.Location = new System.Drawing.Point(391, 175);
+            this.labelState.Name = "labelState";
+            this.labelState.Size = new System.Drawing.Size(70, 22);
+            this.labelState.TabIndex = 16;
+            this.labelState.Text = "State:";
+            // 
+            // comboBoxState
+            // 
+            this.comboBoxState.Enabled = false;
+            this.comboBoxState.FormattingEnabled = true;
+            this.comboBoxState.Location = new System.Drawing.Point(466, 169);
+            this.comboBoxState.Name = "comboBoxState";
+            this.comboBoxState.Size = new System.Drawing.Size(266, 33);
+            this.comboBoxState.TabIndex = 17;
+            // 
+            // labelZip
+            // 
+            this.labelZip.AutoSize = true;
+            this.labelZip.Enabled = false;
+            this.labelZip.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelZip.Location = new System.Drawing.Point(390, 220);
+            this.labelZip.Name = "labelZip";
+            this.labelZip.Size = new System.Drawing.Size(100, 22);
+            this.labelZip.TabIndex = 18;
+            this.labelZip.Text = "ZIP Code:";
+            // 
+            // textBoxZip
+            // 
+            this.textBoxZip.Enabled = false;
+            this.textBoxZip.Location = new System.Drawing.Point(496, 215);
+            this.textBoxZip.Name = "textBoxZip";
+            this.textBoxZip.Size = new System.Drawing.Size(236, 31);
+            this.textBoxZip.TabIndex = 19;
             // 
             // ReturnsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(760, 397);
+            this.Controls.Add(this.textBoxZip);
+            this.Controls.Add(this.labelZip);
+            this.Controls.Add(this.comboBoxState);
+            this.Controls.Add(this.labelState);
+            this.Controls.Add(this.textBoxCity);
+            this.Controls.Add(this.labelCity);
+            this.Controls.Add(this.textBoxAddress);
+            this.Controls.Add(this.addressLabel);
             this.Controls.Add(this.textBoxPhone);
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.buttonGenerate);
@@ -184,6 +280,14 @@ namespace ReturnLabelMaker
         private System.Windows.Forms.Button buttonGenerate;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.TextBox textBoxPhone;
+        private System.Windows.Forms.Label addressLabel;
+        private System.Windows.Forms.TextBox textBoxAddress;
+        private System.Windows.Forms.Label labelCity;
+        private System.Windows.Forms.TextBox textBoxCity;
+        private System.Windows.Forms.Label labelState;
+        private System.Windows.Forms.ComboBox comboBoxState;
+        private System.Windows.Forms.Label labelZip;
+        private System.Windows.Forms.TextBox textBoxZip;
     }
 }
 

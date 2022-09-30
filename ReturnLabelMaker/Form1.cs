@@ -16,5 +16,20 @@ namespace ReturnLabelMaker
         {
             InitializeComponent();
         }
+
+        private void comboBoxLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           if(comboBoxLocation.Text == "Other Return Address")
+            {
+                addressLabel.Enabled = true;
+                labelCity.Enabled = true;
+                labelState.Enabled = true;
+                labelZip.Enabled = true;
+                textBoxAddress.Enabled = true;
+                textBoxCity.Enabled = true;
+                textBoxZip.Enabled = true;
+                comboBoxState.Enabled = true;
+            }
+        }
     }
 }
