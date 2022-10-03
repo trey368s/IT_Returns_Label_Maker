@@ -48,6 +48,7 @@ namespace ReturnLabelMaker
             this.comboBoxState = new System.Windows.Forms.ComboBox();
             this.labelZip = new System.Windows.Forms.Label();
             this.textBoxZip = new System.Windows.Forms.TextBox();
+            this.labelURL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // h1Label
@@ -141,6 +142,7 @@ namespace ReturnLabelMaker
             this.buttonGenerate.TabIndex = 9;
             this.buttonGenerate.Text = "Generate";
             this.buttonGenerate.UseVisualStyleBackColor = true;
+            this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
             // 
             // phoneLabel
             // 
@@ -213,6 +215,57 @@ namespace ReturnLabelMaker
             // 
             this.comboBoxState.Enabled = false;
             this.comboBoxState.FormattingEnabled = true;
+            this.comboBoxState.Items.AddRange(new object[] {
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
             this.comboBoxState.Location = new System.Drawing.Point(466, 169);
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(266, 33);
@@ -237,11 +290,21 @@ namespace ReturnLabelMaker
             this.textBoxZip.Size = new System.Drawing.Size(236, 31);
             this.textBoxZip.TabIndex = 19;
             // 
+            // labelURL
+            // 
+            this.labelURL.AutoSize = true;
+            this.labelURL.Location = new System.Drawing.Point(12, 363);
+            this.labelURL.Name = "labelURL";
+            this.labelURL.Size = new System.Drawing.Size(43, 25);
+            this.labelURL.TabIndex = 20;
+            this.labelURL.Text = "URL";
+            // 
             // ReturnsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 397);
+            this.Controls.Add(this.labelURL);
             this.Controls.Add(this.textBoxZip);
             this.Controls.Add(this.labelZip);
             this.Controls.Add(this.comboBoxState);
@@ -288,6 +351,7 @@ namespace ReturnLabelMaker
         private System.Windows.Forms.ComboBox comboBoxState;
         private System.Windows.Forms.Label labelZip;
         private System.Windows.Forms.TextBox textBoxZip;
+        private System.Windows.Forms.Label labelURL;
     }
 }
 

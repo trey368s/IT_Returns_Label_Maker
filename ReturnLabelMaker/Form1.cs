@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +43,20 @@ namespace ReturnLabelMaker
                 textBoxZip.Enabled = false;
                 comboBoxState.Enabled = false;
             }
+        }
+
+        private void buttonGenerate_Click(object sender, EventArgs e)
+        {
+            var client = new RestClient("https://apis.fedex.com/oauth/token");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("grant_type", "client_credentials");
+            request.AddParameter("client_id", "");
+            request.AddParameter("client_secret", "");
+            IRestResponse response = client.Execute(request);
+            var authResp = response.Content;
+            var authJson = JObject.Parse(authResp);
+            labelURL.Text = authJson["access_token"].ToString();
         }
     }
 }
