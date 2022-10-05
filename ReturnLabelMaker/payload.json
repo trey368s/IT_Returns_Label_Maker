@@ -1,0 +1,61 @@
+{
+  "mergeLabelDocOption": "LABELS_AND_DOCS",
+  "requestedShipment": {
+    "shipper": {
+      "address": {
+        "streetLines": [
+          null
+        ],
+        "city": null,
+        "stateOrProvinceCode": null,
+        "postalCode": null,
+        "countryCode": null
+      },
+      "contact": {
+        "personName": null,
+        "phoneNumber": null,
+        "companyName": null
+      }
+    },
+    "recipients": [
+      {
+        "address": {
+          "streetLines": [
+            "11502 Century Blvd"
+          ],
+          "city": "Springdale",
+          "stateOrProvinceCode": "OH",
+          "postalCode": "45246",
+          "countryCode": "US"
+        },
+        "contact": {
+          "personName": "IT Returns",
+          "phoneNumber": "5133414948",
+          "companyName": "Senneca Holdings"
+        }
+      }
+    ],
+    "pickupType": "DROPOFF_AT_FEDEX_LOCATION",
+    "serviceType": "FEDEX_2_DAY",
+    "packagingType": "YOUR_PACKAGING",
+    "shippingChargesPayment": {
+      "paymentType": "SENDER"
+    }
+  },
+  "labelSpecification": {
+    "labelStockType": "PAPER_85X11_TOP_HALF_LABEL",
+    "imageType": "PDF"
+  },
+  "requestedPackageLineItems": [
+    {
+      "weight": {
+        "units": "LB",
+        "value": null
+      }
+    }
+  ],
+  "labelResponseOptions": "URL_ONLY",
+  "accountNumber": {
+    "value": "045213188"
+  }
+}

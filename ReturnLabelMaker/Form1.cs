@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,16 +48,39 @@ namespace ReturnLabelMaker
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            var client = new RestClient("https://apis.fedex.com/oauth/token");
+            var client = new RestClient("https://apis-sandbox.fedex.com/oauth/token");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddParameter("grant_type", "client_credentials");
-            request.AddParameter("client_id", "");
-            request.AddParameter("client_secret", "");
+            request.AddParameter("client_id", "l79c1c06a3f8c94ff5978c6476b9626fd1"); //Test Environment Keys
+            request.AddParameter("client_secret", "105a0c4846384cfda7d1c2c8ad076a19");
             IRestResponse response = client.Execute(request);
             var authResp = response.Content;
             var authJson = JObject.Parse(authResp);
-            labelURL.Text = authJson["access_token"].ToString();
+            var bearer = authJson["access_token"].ToString();
+
+            string path = Directory.GetCurrentDirectory();
+            string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
+            string payloadPath = Path.Combine(newPath, "payload.json");
+            string json = File.ReadAllText(payloadPath);
+            dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+            jsonObj["requestedShipment"]["shipper"]["address"]["streetLines"][0] = "new password";
+            jsonObj["requestedShipment"]["shipper"]["address"]["city"] = "new password";
+            jsonObj["requestedShipment"]["shipper"]["address"]["stateOrProvinceCode"] = "new password";
+            jsonObj["requestedShipment"]["shipper"]["address"]["postalCode"] = "new password";
+            jsonObj["requestedShipment"]["shipper"]["address"]["countryCode"] = "new password";
+            jsonObj["requestedShipment"]["shipper"]["contact"]["personName"] = "new password";
+            string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
+            
+            var client1 = new RestClient("https://apis-sandbox.fedex.com/ship/v1/shipments");
+            var request1 = new RestRequest(Method.POST);
+            request1.AddHeader("Authorization", "Bearer " + bearer);
+            request1.AddHeader("X-locale", "en_US");
+            request1.AddHeader("Content-Type", "application/json");
+            request1.AddParameter("undefined", output, ParameterType.RequestBody);
+            IRestResponse response1 = client1.Execute(request1);
+            labelURL.Text = response1.Content;
+
         }
     }
 }
