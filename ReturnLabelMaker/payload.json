@@ -9,7 +9,7 @@
         "city": null,
         "stateOrProvinceCode": null,
         "postalCode": null,
-        "countryCode": null
+        "countryCode": "US"
       },
       "contact": {
         "personName": null,
@@ -40,22 +40,22 @@
     "packagingType": "YOUR_PACKAGING",
     "shippingChargesPayment": {
       "paymentType": "SENDER"
-    }
-  },
-  "labelSpecification": {
-    "labelStockType": "PAPER_85X11_TOP_HALF_LABEL",
-    "imageType": "PDF"
-  },
-  "requestedPackageLineItems": [
-    {
-      "weight": {
-        "units": "LB",
-        "value": null
+    },
+    "labelSpecification": {
+      "labelStockType": "PAPER_85X11_TOP_HALF_LABEL",
+      "imageType": "PDF"
+    },
+    "requestedPackageLineItems": [
+      {
+        "weight": {
+          "units": "LB",
+          "value": null
+        }
       }
-    }
-  ],
+    ]
+  },
   "labelResponseOptions": "URL_ONLY",
   "accountNumber": {
-    "value": "045213188"
+    "value": "740561073"
   }
 }

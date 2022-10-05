@@ -64,12 +64,17 @@ namespace ReturnLabelMaker
             string payloadPath = Path.Combine(newPath, "payload.json");
             string json = File.ReadAllText(payloadPath);
             dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
-            jsonObj["requestedShipment"]["shipper"]["address"]["streetLines"][0] = "new password";
-            jsonObj["requestedShipment"]["shipper"]["address"]["city"] = "new password";
-            jsonObj["requestedShipment"]["shipper"]["address"]["stateOrProvinceCode"] = "new password";
-            jsonObj["requestedShipment"]["shipper"]["address"]["postalCode"] = "new password";
-            jsonObj["requestedShipment"]["shipper"]["address"]["countryCode"] = "new password";
-            jsonObj["requestedShipment"]["shipper"]["contact"]["personName"] = "new password";
+            if (comboBoxLocation.Text == "Other Return Address")
+            {
+                jsonObj["requestedShipment"]["shipper"]["address"]["streetLines"][0] = textBoxAddress.Text;
+                jsonObj["requestedShipment"]["shipper"]["address"]["city"] = textBoxCity.Text;
+                jsonObj["requestedShipment"]["shipper"]["address"]["stateOrProvinceCode"] = comboBoxState.Text;
+                jsonObj["requestedShipment"]["shipper"]["address"]["postalCode"] = textBoxZip.Text;
+                jsonObj["requestedShipment"]["shipper"]["contact"]["companyName"] = "";
+            }
+            jsonObj["requestedShipment"]["shipper"]["contact"]["personName"] = textBoxName.Text;
+            jsonObj["requestedShipment"]["shipper"]["contact"]["phoneNumber"] = textBoxPhone.Text;
+            jsonObj["requestedShipment"]["requestedPackageLineItems"][0]["weight"]["value"] = textBoxWeight.Text;
             string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
             
             var client1 = new RestClient("https://apis-sandbox.fedex.com/ship/v1/shipments");
