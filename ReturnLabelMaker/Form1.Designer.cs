@@ -48,7 +48,7 @@ namespace ReturnLabelMaker
             this.comboBoxState = new System.Windows.Forms.ComboBox();
             this.labelZip = new System.Windows.Forms.Label();
             this.textBoxZip = new System.Windows.Forms.TextBox();
-            this.labelURL = new System.Windows.Forms.Label();
+            this.linkLabelURL = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // h1Label
@@ -136,7 +136,7 @@ namespace ReturnLabelMaker
             // buttonGenerate
             // 
             this.buttonGenerate.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonGenerate.Location = new System.Drawing.Point(251, 294);
+            this.buttonGenerate.Location = new System.Drawing.Point(263, 263);
             this.buttonGenerate.Name = "buttonGenerate";
             this.buttonGenerate.Size = new System.Drawing.Size(239, 57);
             this.buttonGenerate.TabIndex = 9;
@@ -290,21 +290,20 @@ namespace ReturnLabelMaker
             this.textBoxZip.Size = new System.Drawing.Size(236, 31);
             this.textBoxZip.TabIndex = 19;
             // 
-            // labelURL
+            // linkLabelURL
             // 
-            this.labelURL.AutoSize = true;
-            this.labelURL.Location = new System.Drawing.Point(12, 363);
-            this.labelURL.Name = "labelURL";
-            this.labelURL.Size = new System.Drawing.Size(43, 25);
-            this.labelURL.TabIndex = 20;
-            this.labelURL.Text = "URL";
+            this.linkLabelURL.AutoSize = true;
+            this.linkLabelURL.Location = new System.Drawing.Point(13, 279);
+            this.linkLabelURL.Name = "linkLabelURL";
+            this.linkLabelURL.Size = new System.Drawing.Size(0, 25);
+            this.linkLabelURL.TabIndex = 21;
             // 
             // ReturnsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 397);
-            this.Controls.Add(this.labelURL);
+            this.ClientSize = new System.Drawing.Size(760, 334);
+            this.Controls.Add(this.linkLabelURL);
             this.Controls.Add(this.textBoxZip);
             this.Controls.Add(this.labelZip);
             this.Controls.Add(this.comboBoxState);
@@ -351,7 +350,7 @@ namespace ReturnLabelMaker
         private System.Windows.Forms.ComboBox comboBoxState;
         private System.Windows.Forms.Label labelZip;
         private System.Windows.Forms.TextBox textBoxZip;
-        private System.Windows.Forms.Label labelURL;
+        private System.Windows.Forms.LinkLabel linkLabelURL;
     }
 }
 
