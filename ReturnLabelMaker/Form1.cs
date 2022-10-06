@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
+using System.Reflection;
 
 namespace ReturnLabelMaker
 {
@@ -19,6 +21,7 @@ namespace ReturnLabelMaker
         public ReturnsForm()
         {
             InitializeComponent();
+            Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
         }
 
         private void comboBoxLocation_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,10 +63,8 @@ namespace ReturnLabelMaker
             var authJson = JObject.Parse(authResp);
             var bearer = authJson["access_token"].ToString();
 
-            string path = Directory.GetCurrentDirectory();
-            string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
-            string payloadPath = Path.Combine(newPath, "payload.json");
-            string json = File.ReadAllText(payloadPath);
+            ResourceManager rm = new ResourceManager("ReturnLabelMaker.Properties.Resources", Assembly.GetExecutingAssembly());
+            String json = rm.GetString("payload1");
             dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
             if (comboBoxLocation.Text == "Cincinnati")
             {
