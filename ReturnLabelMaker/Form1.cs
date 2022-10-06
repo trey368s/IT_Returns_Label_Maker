@@ -21,7 +21,6 @@ namespace ReturnLabelMaker
         public ReturnsForm()
         {
             InitializeComponent();
-            Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
         }
 
         private void comboBoxLocation_SelectedIndexChanged(object sender, EventArgs e)

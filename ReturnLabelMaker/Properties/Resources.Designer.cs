@@ -61,16 +61,6 @@ namespace ReturnLabelMaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] payload {
-            get {
-                object obj = ResourceManager.GetObject("payload", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;mergeLabelDocOption&quot;: &quot;LABELS_AND_DOCS&quot;,
         ///  &quot;requestedShipment&quot;: {
