@@ -67,12 +67,12 @@ namespace ReturnLabelMaker
             // h2Label
             // 
             this.h2Label.AutoSize = true;
-            this.h2Label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.h2Label.Location = new System.Drawing.Point(12, 37);
+            this.h2Label.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.h2Label.Location = new System.Drawing.Point(13, 45);
             this.h2Label.Name = "h2Label";
-            this.h2Label.Size = new System.Drawing.Size(155, 28);
+            this.h2Label.Size = new System.Drawing.Size(720, 22);
             this.h2Label.TabIndex = 2;
-            this.h2Label.Text = "Description";
+            this.h2Label.Text = "Please only return laptops or reusable equipment less than 3 years old.";
             // 
             // nameLabel
             // 

@@ -52,14 +52,14 @@ namespace ReturnLabelMaker
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
             labelError.Text = "";
-            var client = new RestClient("https://apis-sandbox.fedex.com/oauth/token");
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.AddParameter("grant_type", "client_credentials");
-            request.AddParameter("client_id", "l79c1c06a3f8c94ff5978c6476b9626fd1"); //Test Environment Keys
-            request.AddParameter("client_secret", "105a0c4846384cfda7d1c2c8ad076a19");
-            IRestResponse response = client.Execute(request);
-            var authResp = response.Content;
+            var authClient = new RestClient("https://apis-sandbox.fedex.com/oauth/token");
+            var authRequest = new RestRequest(Method.POST);
+            authRequest.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            authRequest.AddParameter("grant_type", "client_credentials");
+            authRequest.AddParameter("client_id", "l79c1c06a3f8c94ff5978c6476b9626fd1"); //Test Environment Keys
+            authRequest.AddParameter("client_secret", "105a0c4846384cfda7d1c2c8ad076a19");
+            IRestResponse authResponse = authClient.Execute(authRequest);
+            var authResp = authResponse.Content;
             var authJson = JObject.Parse(authResp);
             var bearer = authJson["access_token"].ToString();
 
@@ -127,18 +127,18 @@ namespace ReturnLabelMaker
             jsonObj["requestedShipment"]["requestedPackageLineItems"][0]["weight"]["value"] = textBoxWeight.Text;
             string payload = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
             
-            var client1 = new RestClient("https://apis-sandbox.fedex.com/ship/v1/shipments");
-            var request1 = new RestRequest(Method.POST);
-            request1.AddHeader("Authorization", "Bearer " + bearer);
-            request1.AddHeader("X-locale", "en_US");
-            request1.AddHeader("Content-Type", "application/json");
-            request1.AddParameter("undefined", payload, ParameterType.RequestBody);
-            IRestResponse response1 = client1.Execute(request1);
-            var authResp1 = response1.Content;
-            var authJson1 = JObject.Parse(authResp1);
+            var shipClient = new RestClient("https://apis-sandbox.fedex.com/ship/v1/shipments");
+            var shipRquest = new RestRequest(Method.POST);
+            shipRquest.AddHeader("Authorization", "Bearer " + bearer);
+            shipRquest.AddHeader("X-locale", "en_US");
+            shipRquest.AddHeader("Content-Type", "application/json");
+            shipRquest.AddParameter("undefined", payload, ParameterType.RequestBody);
+            IRestResponse shipResponse = shipClient.Execute(shipRquest);
+            var shipResp = shipResponse.Content;
+            var shipJson = JObject.Parse(shipResp);
             try
             {
-                var url1 = authJson1["output"]["transactionShipments"][0]["pieceResponses"][0]["packageDocuments"][0]["url"].ToString();
+                var url1 = shipJson["output"]["transactionShipments"][0]["pieceResponses"][0]["packageDocuments"][0]["url"].ToString();
                 linkLabelURL.Text = url1;
                 Process.Start(new ProcessStartInfo(url1) { UseShellExecute = true });
             }
