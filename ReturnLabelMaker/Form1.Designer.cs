@@ -29,6 +29,7 @@ namespace ReturnLabelMaker
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnsForm));
             this.h1Label = new System.Windows.Forms.Label();
             this.h2Label = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@ namespace ReturnLabelMaker
             this.comboBoxState = new System.Windows.Forms.ComboBox();
             this.labelZip = new System.Windows.Forms.Label();
             this.textBoxZip = new System.Windows.Forms.TextBox();
+            this.labelError = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabelURL = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
@@ -136,7 +139,7 @@ namespace ReturnLabelMaker
             // buttonGenerate
             // 
             this.buttonGenerate.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonGenerate.Location = new System.Drawing.Point(263, 263);
+            this.buttonGenerate.Location = new System.Drawing.Point(261, 286);
             this.buttonGenerate.Name = "buttonGenerate";
             this.buttonGenerate.Size = new System.Drawing.Size(239, 57);
             this.buttonGenerate.TabIndex = 9;
@@ -290,20 +293,43 @@ namespace ReturnLabelMaker
             this.textBoxZip.Size = new System.Drawing.Size(236, 31);
             this.textBoxZip.TabIndex = 19;
             // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelError.Location = new System.Drawing.Point(13, 257);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(0, 19);
+            this.labelError.TabIndex = 22;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(-123, 155);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(90, 25);
+            this.linkLabel1.TabIndex = 23;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            // 
             // linkLabelURL
             // 
             this.linkLabelURL.AutoSize = true;
-            this.linkLabelURL.Location = new System.Drawing.Point(13, 279);
+            this.linkLabelURL.Font = new System.Drawing.Font("Consolas", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelURL.Location = new System.Drawing.Point(7, 257);
             this.linkLabelURL.Name = "linkLabelURL";
-            this.linkLabelURL.Size = new System.Drawing.Size(0, 25);
-            this.linkLabelURL.TabIndex = 21;
+            this.linkLabelURL.Size = new System.Drawing.Size(0, 14);
+            this.linkLabelURL.TabIndex = 24;
+            this.linkLabelURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelURL_LinkClicked);
             // 
             // ReturnsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 334);
+            this.ClientSize = new System.Drawing.Size(760, 355);
             this.Controls.Add(this.linkLabelURL);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.labelError);
             this.Controls.Add(this.textBoxZip);
             this.Controls.Add(this.labelZip);
             this.Controls.Add(this.comboBoxState);
@@ -323,6 +349,7 @@ namespace ReturnLabelMaker
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.h2Label);
             this.Controls.Add(this.h1Label);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReturnsForm";
             this.Text = "IT Returns Form";
             this.ResumeLayout(false);
@@ -350,6 +377,8 @@ namespace ReturnLabelMaker
         private System.Windows.Forms.ComboBox comboBoxState;
         private System.Windows.Forms.Label labelZip;
         private System.Windows.Forms.TextBox textBoxZip;
+        private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabelURL;
     }
 }

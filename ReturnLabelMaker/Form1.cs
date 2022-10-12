@@ -51,6 +51,7 @@ namespace ReturnLabelMaker
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
+            labelError.Text = "";
             var client = new RestClient("https://apis-sandbox.fedex.com/oauth/token");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -135,8 +136,22 @@ namespace ReturnLabelMaker
             IRestResponse response1 = client1.Execute(request1);
             var authResp1 = response1.Content;
             var authJson1 = JObject.Parse(authResp1);
-            var url1 = authJson1["output"]["transactionShipments"][0]["pieceResponses"][0]["packageDocuments"][0]["url"].ToString();
-            Process.Start(new ProcessStartInfo(url1) { UseShellExecute = true });
+            try
+            {
+                var url1 = authJson1["output"]["transactionShipments"][0]["pieceResponses"][0]["packageDocuments"][0]["url"].ToString();
+                linkLabelURL.Text = url1;
+                Process.Start(new ProcessStartInfo(url1) { UseShellExecute = true });
+            }
+            catch (NullReferenceException)
+            {
+                linkLabelURL.Text = "";
+                labelError.Text = "An error occurred, please check the inputs and try again.";
+            }
+        }
+
+        private void linkLabelURL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(linkLabelURL.Text) { UseShellExecute = true });
         }
     }
 }
