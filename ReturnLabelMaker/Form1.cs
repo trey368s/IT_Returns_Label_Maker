@@ -1,15 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
 using System.Reflection;
@@ -51,20 +43,20 @@ namespace ReturnLabelMaker
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            labelError.Text = "";
-            var authClient = new RestClient("https://apis-sandbox.fedex.com/oauth/token");
+            labelError.Text = ""; //Clear error label
+            var authClient = new RestClient("https://apis-sandbox.fedex.com/oauth/token"); //Auth URL
             var authRequest = new RestRequest(Method.POST);
             authRequest.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             authRequest.AddParameter("grant_type", "client_credentials");
             authRequest.AddParameter("client_id", "l79c1c06a3f8c94ff5978c6476b9626fd1"); //Test Environment Keys
             authRequest.AddParameter("client_secret", "105a0c4846384cfda7d1c2c8ad076a19");
-            IRestResponse authResponse = authClient.Execute(authRequest);
+            IRestResponse authResponse = authClient.Execute(authRequest); //Request authentication
             var authResp = authResponse.Content;
             var authJson = JObject.Parse(authResp);
-            var bearer = authJson["access_token"].ToString();
+            var bearer = authJson["access_token"].ToString(); //Take out bearer key
 
             ResourceManager rm = new ResourceManager("ReturnLabelMaker.Properties.Resources", Assembly.GetExecutingAssembly());
-            String json = rm.GetString("payload1");
+            String json = rm.GetString("payload1"); //Take payload from resource manager
             dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
             if (comboBoxLocation.Text == "Cincinnati")
             {
@@ -127,22 +119,22 @@ namespace ReturnLabelMaker
             jsonObj["requestedShipment"]["requestedPackageLineItems"][0]["weight"]["value"] = textBoxWeight.Text;
             string payload = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
             
-            var shipClient = new RestClient("https://apis-sandbox.fedex.com/ship/v1/shipments");
+            var shipClient = new RestClient("https://apis-sandbox.fedex.com/ship/v1/shipments"); //Ship URL
             var shipRquest = new RestRequest(Method.POST);
             shipRquest.AddHeader("Authorization", "Bearer " + bearer);
             shipRquest.AddHeader("X-locale", "en_US");
             shipRquest.AddHeader("Content-Type", "application/json");
             shipRquest.AddParameter("undefined", payload, ParameterType.RequestBody);
-            IRestResponse shipResponse = shipClient.Execute(shipRquest);
+            IRestResponse shipResponse = shipClient.Execute(shipRquest); //Request shipping label
             var shipResp = shipResponse.Content;
-            var shipJson = JObject.Parse(shipResp);
+            var shipJson = JObject.Parse(shipResp); //Parse response 
             try
             {
-                var url1 = shipJson["output"]["transactionShipments"][0]["pieceResponses"][0]["packageDocuments"][0]["url"].ToString();
-                linkLabelURL.Text = url1;
-                Process.Start(new ProcessStartInfo(url1) { UseShellExecute = true });
+                var url = shipJson["output"]["transactionShipments"][0]["pieceResponses"][0]["packageDocuments"][0]["url"].ToString();
+                linkLabelURL.Text = url; //Take label URL
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true }); //Open in web browser
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException) //Catch exceptions due to no URL
             {
                 linkLabelURL.Text = "";
                 labelError.Text = "An error occurred, please check the inputs and try again.";
