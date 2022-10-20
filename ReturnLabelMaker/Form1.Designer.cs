@@ -52,6 +52,7 @@ namespace ReturnLabelMaker
             this.labelError = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabelURL = new System.Windows.Forms.LinkLabel();
+            this.linkLabelKb = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // h1Label
@@ -70,9 +71,9 @@ namespace ReturnLabelMaker
             this.h2Label.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.h2Label.Location = new System.Drawing.Point(13, 45);
             this.h2Label.Name = "h2Label";
-            this.h2Label.Size = new System.Drawing.Size(720, 22);
+            this.h2Label.Size = new System.Drawing.Size(670, 22);
             this.h2Label.TabIndex = 2;
-            this.h2Label.Text = "Please only return laptops or reusable equipment less than 3 years old.";
+            this.h2Label.Text = "Please only return laptops, cell phones, or other equipment listed";
             // 
             // nameLabel
             // 
@@ -315,18 +316,31 @@ namespace ReturnLabelMaker
             // linkLabelURL
             // 
             this.linkLabelURL.AutoSize = true;
-            this.linkLabelURL.Font = new System.Drawing.Font("Consolas", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelURL.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabelURL.Location = new System.Drawing.Point(7, 257);
             this.linkLabelURL.Name = "linkLabelURL";
-            this.linkLabelURL.Size = new System.Drawing.Size(0, 14);
+            this.linkLabelURL.Size = new System.Drawing.Size(0, 15);
             this.linkLabelURL.TabIndex = 24;
             this.linkLabelURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelURL_LinkClicked);
+            // 
+            // linkLabelKb
+            // 
+            this.linkLabelKb.AutoSize = true;
+            this.linkLabelKb.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelKb.Location = new System.Drawing.Point(681, 45);
+            this.linkLabelKb.Name = "linkLabelKb";
+            this.linkLabelKb.Size = new System.Drawing.Size(60, 22);
+            this.linkLabelKb.TabIndex = 25;
+            this.linkLabelKb.TabStop = true;
+            this.linkLabelKb.Text = "here.";
+            this.linkLabelKb.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelKb_LinkClicked);
             // 
             // ReturnsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 355);
+            this.Controls.Add(this.linkLabelKb);
             this.Controls.Add(this.linkLabelURL);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.labelError);
@@ -380,6 +394,7 @@ namespace ReturnLabelMaker
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabelURL;
+        private System.Windows.Forms.LinkLabel linkLabelKb;
     }
 }
 
